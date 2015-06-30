@@ -1,0 +1,21 @@
+#Data Structure & Algorithm
+
+##Link list
+
+* Basic:
+    * single/double
+    * add/delete
+* Characteristic
+    * Head pointer is different with others
+    * Single:
+        * Cannot go back!
+* Tricks:
+    * **Reverse** single link list
+        > 3 pointers
+
+    * **n**th to last
+        > 2 pointers<br>
+        > edge case: none/one element only<br>
+        > rm: the 1st is different
+    * find the middle of single link list
+        > 2 pointers, 1st 2 steps/circle, then 2nd 1 step. Finally, 2nd move 1 more step to start of second half.
