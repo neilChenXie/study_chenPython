@@ -1,20 +1,59 @@
 #! /usr/bin/python
 
-class listNode:
+class ListNode:
     def __init__(self,x):
         self.value = x
         self.next = None
+    def get_next(self):
+        return self.next
+    def get_value(self):
+        return self.value
+    def set_next(self,n):
+        self.next = n
+    def set_value(self,x):
+        self.value = x
 
-class linkList:
-    def __init__(self, r = None):
-        self.root = r
-        self.next = None
-    def add(self,n):
-        new_node = listNode(n)
-        new_node.next = self.root
+class LinkList:
+    def __init__(self):
+        self.root = None
+        self.size = 0
+    def insert(self,n):
+        new_node = ListNode(n)
+        new_node.set_next(self.root)
         self.root = new_node
+        self.size += 1
+    def append(self,n):
+        new_node = ListNode(n)
+        nodeTail = self.get_tail()
+        if nodeTail == None:
+            self.root = new_node
+        else:
+            nodeTail.set_next(new_node)
+        self.size += 1
+    def append_node(self,newNode):
+        nodeTail = self.get_tail()
+        if nodeTail == None:
+            self.root = newNode
+        else:
+            nodeTail.set_next(newNode)
+        self.size += 1
+    def insert_node(self,newNode):
+        newNode.set_next(self.root)
+        self.root = newNode
+        self.size += 1
+    def get_tail(self):
+        if self.root == None:
+            return None
+        nodeGo = self.root
+        while nodeGo.get_next() != None:
+            print nodeGo.value
+            nodeGo = nodeGo.get_next()
+        return nodeGo
     def print_all(self):
         r = self.root
         while r != None:
-            print str(r.value),"->"
-            r = r.next
+            if r.get_next() != None:
+                print str(r.get_value()),"->",
+            else:
+                print str(r.get_value())
+            r = r.get_next()

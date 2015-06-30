@@ -1,7 +1,7 @@
-Python
-======
-Fundamental
------------------
+#Python
+
+##Fundamental
+
 * `#` for comment
 *  `%` for `print`
     * What is the difference between `%r` and `%s` ?
@@ -12,22 +12,34 @@ Fundamental
     * `[]`: list
     * `{}`: dictionary
     * `()`: tuple
+* module
+  * `__name__`: `__main__` or `module`
 
-Design Skill
----------------
+##Design Skill
 
-Coding Skill
----------------
+* OOP
+  * class variable & object variable
+  * no virtual function like C++
+  * don't touch member directly
+
+* Structure
+
+##Coding Skill
 
 * x = a or b
-
-	```
+	```py
 	#one of a,b is equal to None
-	if a or b: 
+	if a or b:
 		x = a or b
 	```
+* `print` without newline
+```py
+  print str(node.value) , "->" ,
+```
 
+##Fault List
 
-Fault List
-----------
-* **and** instead of **&&**
+* `and` instead of `&&`
+
+* create **intersection** link list
+> cannot append multiple nodes one by one to 2 link lists, because when we append them to the 1st list, all nodes are linked together, for the 2nd list, there will be circle.
