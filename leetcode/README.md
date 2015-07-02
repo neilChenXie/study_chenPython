@@ -13,7 +13,7 @@
 
     * Reverse single link list
 
-        1. > pointers
+        > pointers
 
     * **n**th to last
         > 2 pointers<br>
