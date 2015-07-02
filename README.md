@@ -27,16 +27,23 @@
 ##Coding Skill
 
 * x = a or b
-	```py
-	#one of a,b is equal to None
-	if a or b:
-		x = a or b
-	```
+```py
+#one of a,b is equal to None
+if a or b:
+	x = a or b
+```
 * `print` without newline
 ```py
   print str(node.value) , "->" ,
 ```
-
+* `hasattr()` check whether it has additional attributes
+```py
+while newHead != None:
+    if hasattr(newHead,'flag') and newHead.flag == True:
+        return newHead
+    newHead.flag = True
+return None
+```
 ##Fault List
 
 * `and` instead of `&&`

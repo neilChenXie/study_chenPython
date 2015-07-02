@@ -18,4 +18,6 @@
         > edge case: none/one element only<br>
         > rm: the 1st is different
     * find the middle of single link list
-        > 2 pointers, 1st 2 steps/circle, then 2nd 1 step. Finally, 2nd move 1 more step to start of second half.
+        > 2 pointers, 1st 2 steps/circle, then 2nd 1 step. Finally, 2nd move 1 more step to the start of second half.
+    * link list cycle
+        > fast pointer 2 steps while slow pointer 1 step, if catch up, True, else False

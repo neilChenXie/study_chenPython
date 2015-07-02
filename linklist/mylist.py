@@ -2,16 +2,16 @@
 
 class ListNode:
     def __init__(self,x):
-        self.value = x
+        self.val = x
         self.next = None
     def get_next(self):
         return self.next
-    def get_value(self):
-        return self.value
+    def get_val(self):
+        return self.val
     def set_next(self,n):
         self.next = n
-    def set_value(self,x):
-        self.value = x
+    def set_val(self,x):
+        self.val = x
 
 class LinkList:
     def __init__(self):
@@ -46,14 +46,14 @@ class LinkList:
             return None
         nodeGo = self.root
         while nodeGo.get_next() != None:
-            print nodeGo.value
+            print nodeGo.val
             nodeGo = nodeGo.get_next()
         return nodeGo
     def print_all(self):
         r = self.root
         while r != None:
             if r.get_next() != None:
-                print str(r.get_value()),"->",
+                print str(r.get_val()),"->",
             else:
-                print str(r.get_value())
+                print str(r.get_val())
             r = r.get_next()
