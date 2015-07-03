@@ -248,3 +248,107 @@ class Solution:
         if oneNode != None:
             pre.next = oneNode
         return dummyHead.next
+    def addTwoNumbers(self, l1, l2):
+        c = 0
+        rvH = l1
+        if l1 == None:
+            return l2
+        elif l2 == None:
+            return l1
+        while True:
+            tmpRes = l1.val + l2.val + c
+            if tmpRes >= 10:
+                l1.val = tmpRes % 10
+                c = 1
+            else:
+                l1.val = tmpRes
+                c = 0
+            if l1.next != None and l2.next != None:
+                l1 = l1.next
+                l2 = l2.next
+            else:
+                break
+        if l2.next != None:
+            l1.next = l2.next
+            l2.next.val += c
+            l2 = l2.next
+            while l2.val == 10:
+                l2.val %= 10
+                if l2.next != None:
+                    l2.next.val += 1
+                    l2 = l2.next
+                else:
+                    newNode = mylist.ListNode(1)
+                    l2.next = newNode
+        elif l1.next != None:
+            l1.next.val += c
+            l1 = l1.next
+            while l1.val == 10:
+                l1.val %= 10
+                if l1.next !=None:
+                    l1.next.val += 1
+                    l1 = l1.next
+                else: 
+                    newNode = mylist.ListNode(1)
+                    l1.next = newNode
+        elif c == 1:
+            newNode = ListNode(1)
+            l1.next = newNode
+        return rvH
+    def reverseBetween(self, head, m, n):
+        #edge case
+        mnDiff = n - m
+        if mnDiff == 0:
+            return head
+        #find H and T
+        dummyHead = mylist.ListNode(0)
+        dummyHead.next = head
+        h = head
+        t = head
+        i = 0
+        while i < mnDiff:
+            t = t.next
+            i += 1
+        i = 1
+        pre = dummyHead
+        while i < m:
+            h = h.next
+            t = t.next
+            pre = pre.next
+            i += 1
+        #reverse
+        pre.next = t
+        one = h
+        two = h.next
+        three = two.next
+        h.next = t.next
+        while two != t:
+            two.next = one
+            one = two
+            two = three
+            if three != None:
+                three = three.next
+        two.next = one
+        return dummyHead.next
+    def deleteDuplicates(self, head):
+        #edge case
+        if head == None or head.next == None:
+            return head
+        dummyHead = mylist.ListNode(0)
+        dummyHead.next = head
+        pre = dummyHead
+        anchor = head
+        cursor = head.next
+        while cursor != None:
+            if cursor.val != anchor.val:
+                if anchor.next == cursor:
+                    pre = pre.next
+                    pre.next = cursor
+                    anchor = cursor
+                else:
+                    pre.next = cursor
+                    anchor = cursor
+            cursor = cursor.next
+        if anchor.next != None:
+            pre.next = None
+        return dummyHead.next

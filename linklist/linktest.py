@@ -6,19 +6,19 @@ import solution
 if __name__ == "__main__":
     listZero = mylist.LinkList()
     listOne = mylist.LinkList()
-    listOne.append(4)
-    listOne.append(3)
-    listOne.append(2)
     listOne.append(1)
+    listOne.append(2)
+    listOne.append(3)
+    listOne.append(4)
     #listOne.append(9)
     listTwo = mylist.LinkList()
-    listTwo.insert(12)
-    listTwo.insert(20)
-    listTwo.insert(17)
+    listTwo.append(7)
+    listTwo.append(6)
+    listTwo.append(8)
  
-    nodeOne = mylist.ListNode(43)
-    nodeTwo = mylist.ListNode(21)
-    nodeThree = mylist.ListNode(32)
+    nodeOne = mylist.ListNode(4)
+    nodeTwo = mylist.ListNode(5)
+    nodeThree = mylist.ListNode(9)
  
     listOne.append_node(nodeOne)
     listOne.append_node(nodeTwo)
@@ -40,7 +40,10 @@ if __name__ == "__main__":
     #listOne.root = mySolution.rotateRight(listOne.root,3)
     #listOne.root = mySolution.insertionSortList(listOne.root)
     #listOne.root = mySolution.partition(listOne.root,2)
-    listOne.root = mySolution.swapPairs(listOne.root)
+    #listOne.root = mySolution.swapPairs(listOne.root)
+    #listOne.root = mySolution.addTwoNumbers(listOne.root, listTwo.root);
+    #listOne.root = mySolution.reverseBetween(listOne.root, 2, 7);
+    listOne.root = mySolution.deleteDuplicates(listOne.root);
 
 
     listOne.print_all()
