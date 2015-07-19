@@ -9,12 +9,17 @@
     * What's the point of %s and %d when you can just use %r?
         * The %r is best for debugging, and the other formats are for actually displaying variables to users.
 * `[]`, `{}` and `()`
+
     * `[]`: list
-    * `{}`: dictionary
+
+    * `{}`: set, dictionary
+
     * `()`: tuple
+
 * module
   * `__name__`: `__main__` or `module`
-
+* get object or variable **address**
+  * id()
 ##Design Skill
 
 * OOP
@@ -49,4 +54,5 @@ return None
 * `and` instead of `&&`
 
 * create **intersection** link list
-> cannot append multiple nodes one by one to 2 link lists, because when we append them to the 1st list, all nodes are linked together, for the 2nd list, there will be circle.
+
+    > cannot append multiple nodes one by one to 2 link lists, because when we append them to the 1st list, all nodes are linked together, for the 2nd list, there will be circle.
