@@ -12,7 +12,7 @@
 
     * `[]`: list
 
-    * `{}`: set, dictionary
+    * `{}`: dictionary
 
     * `()`: tuple
 
@@ -29,6 +29,8 @@
 
 * Structure
 
+  * multi-file use **os** and **sys** module to change `path`
+  
 ##Coding Skill
 
 * x = a or b
@@ -56,3 +58,5 @@ return None
 * create **intersection** link list
 
     > cannot append multiple nodes one by one to 2 link lists, because when we append them to the 1st list, all nodes are linked together, for the 2nd list, there will be circle.
+
+* file name cannot be `string.py`

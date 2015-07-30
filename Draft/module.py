@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
-import sys
+import multifile
 
 #for i in sys.argv:
 #    print i
 #print sys.path
 
-print __name__
+#print __name__
