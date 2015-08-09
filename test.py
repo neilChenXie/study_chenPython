@@ -11,7 +11,9 @@ import linklist
 import btree
 
 #related solution
-import dc
+#import dc
+#import dp
+import arysol
 
 #list test
 #listOne = mylist.LinkList()
@@ -42,8 +44,7 @@ import dc
 # 4 5 4 3
 
 #string input
-a = '10+5'
-
+a = [3,4,6,0,3,7,5,8,2,9,1,6,6,2]
 ##solution
-mysolu = dc.Solution()
-mysolu.diffWaysToCompute(a)
+mysolu = arysol.Solution()
+print mysolu.maxProfit(a)

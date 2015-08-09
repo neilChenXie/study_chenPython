@@ -1,4 +1,4 @@
-#Data Structure & Algorithm
+	#Data Structure & Algorithm
 
 ##General
 * Full Adder
@@ -7,6 +7,60 @@
 | --- | ----- | ---- |
 | **same length** | create one more node with 1 | finished |
 | **different length** | extra + 1, then append | append extra to tail directly |
+
+##Array
+
+* Remove duplicate
+
+	* 2 or 3 pointers, slow and fast
+
+* Binary search
+
+	* finally h == insert position, t == h - 1
+		```py
+		h = 0
+		t = len(ary) - 1
+		while h <= t:
+			i = (h + t) / 2
+			if ary[i] == target:
+				return i
+			elif ary[i] > target:
+				t = i - 1
+			else:
+				h = i + 1
+		#ary[h] is bigger than target and ary[t] is smaller than target
+		#if h = len(ary): need resize origin ary
+		#if t < 0: the 1st element is bigger than target
+		```
+	* rotated ary
+		```py
+		h = 0
+		t = len(ary) - 1
+		while h < t:
+			i = (h + t) / 2
+			if ary[i] == target:
+				return i
+			elif ary[i] > ary[h]:
+				#left side is sorted, no mater there is duplicate or not
+				if target > ary[h] and target < ary[i]:
+					#do BS
+				else:
+					h = i + 1
+			elif ary[i] < ary[t]:
+				#right side is sorted, no mater there is duplicate or not
+				if target < ary[t] and target > ary[i]:
+					#do BS
+				else:
+					t = i - 1
+			elif target > ary[t] and target < ary[h]:
+				return -1
+			else:
+				#equal to ary[h] or ary[t]
+				if ary[h] == target:
+					return h
+				else:
+					h += 1
+		```
 
 ##Link list
 

@@ -3,6 +3,7 @@
 ##Fundamental
 
 * `#` for comment
+
 *  `%` for `print`
     * What is the difference between `%r` and `%s` ?
         * Use the %r for debugging, since it displays the "raw" data of the variable, but the others are used for displaying to users.
@@ -18,8 +19,10 @@
 
 * module
   * `__name__`: `__main__` or `module`
+
 * get object or variable **address**
   * id()
+
 ##Design Skill
 
 * OOP
@@ -39,10 +42,7 @@
 if a or b:
 	x = a or b
 ```
-* `print` without newline
-```py
-  print str(node.value) , "->" ,
-```
+
 * `hasattr()` check whether it has additional attributes
 ```py
 while newHead != None:
@@ -51,6 +51,19 @@ while newHead != None:
     newHead.flag = True
 return None
 ```
+
+* `print`
+    * without newline
+    ```py
+    print str(node.value) , "->" ,
+    ```
+
+    * any format
+    ```py
+    a = [1,2,3]
+    print "the list:%r" %a
+    ```
+
 ##Fault List
 
 * `and` instead of `&&`
