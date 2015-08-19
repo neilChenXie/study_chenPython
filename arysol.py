@@ -2,62 +2,185 @@ import pdb
 import heapq
 
 class Solution:
-    def maxProfit(self, prices):
-        #find all min and max, strip origin array
-        minAry = []
-        maxAry = []
-        h = 1
-        tl = len(prices)
-        mf = True
-        while h < tl:
-            if mf and prices[h] > prices[h - 1]:
-                #find min
-                minAry.append(prices[h - 1])
-                mf = False
-            elif not mf and prices[h] < prices[h - 1]:
-                #find max
-                maxAry.append(prices[h - 1])
-                mf = True
-            #skip others
-            h += 1
-        if not mf:
-            maxAry.append(prices[-1])
-        i = 1
-        tl = len(minAry)
-        if tl == 0:
-            return 0
-        pdb.set_trace()
-        min1 = minAry[0]
-        max1 = maxAry[0]
-        res = max1 - min1
-        min2 = 0
-        max2 = 0
-        while i < tl:
-            if min2 == max2 == 0:
-                #add one or integrate
-                if maxAry[i] - min1 > res + maxAry[i] - minAry[i]:
-                    max1 = maxAry[i]
-                else:
-                    min2 = minAry[i]
-                    max2 = maxAry[i]
-                res = max1 + max2 - min1 - min2
-            else:
-                if maxAry[i] > max2 and minAry[i] < min2:
-                    #2 must update to new
-                    if max2 > max1:
-                        max1 = max2
-                        min1 = min(min1, min2)
-                    else:
-                        if max2 - min2 >= max1 - min1:
-                            max1 = max2
-                            min1 = min2
-                elif maxAry[i] < max2 and minAry[i] > min2:
-                    if maxAry[i] - minAry[i] > max1 - min1:
-                        max1 = max2
-                        min1 = min2
-                        max2 = maxAry[i]
-                        min2 = minAry[i]
-
+    def combine(self, n, k):
+        self.res = []
+    def __doIt(self, tmp, i, k, n):
+        if k == 0:
+            self.res.append(list(tmp))
+            return
+        else:
+            while i < n:
+                tmp.append(i)
+                self.__doIt(tmp, i + 1, k - 1, n)
+                tmp.pop()
+                i += 1
+            return
+#    def combinationSum3(self, k, n):
+#        ''' k 1~9 get n'''
+#        self.res = []
+#        tmpRes = []
+#        self.__doComb3(tmpRes, k, n, i)
+#    def __doComb3(self, tmpRes, k, n, i):
+#        if n == 0 and k == 0:
+#            self.res.append[list(tmpRes)]
+#            return
+#        elif k == 0 or n == 0:
+#            return
+#        else:
+#            while i < 9:
+#                nN = n - i
+#                i += 1
+#                if nN < 0:
+#                    return
+#                else:
+#                    tmpRes.append(i)
+#                    self.__doComb3(tmpRes, k - 1, nN, i)
+#                    tmpRes.pop()
+#            return
+#    def combinationSum2(self, candidates, target):
+#        '''the Answer is in leetcode'''
+#        self.res = []
+#        self.__doComb(target, candidates, [], 0)
+#        return self.res
+#    def __doComb(self, target, candidates, tmpRes, i):
+#        if target == 0:
+#            self.res.append(list(tmpRes))
+#        elif target > 0:
+#            while i < len(candidates):
+#                tmpRes.append(candidates[i])
+#                self.__doComb(target - candidates[i], candidates,tmpRes , i + 1)
+#                i += 1
+#        return
+#    def combinationSum(self, candidates, target):
+#        '''try all possible combination'''
+#        self.res = []
+#        tmpRes = []
+#        self.__doTry(target, candidates, tmpRes, 0)
+#        return self.res
+#    def __doTry(self, target, candidates, tmpRes, i):
+#        if target == 0:
+#            self.res.append(list(tmpRes))
+#            return
+#        elif target < 0:
+#            return
+#        else:
+#            while i < len(candidates):
+#                #DFS start with itself
+#                tmpRes.append(candidates[i])
+#                self.__doTry(target - candidates[i], candidates, tmpRes, i)
+#                tmpRes.pop()
+#                i += 1
+#            return
+#    def findPeakElement(self, nums):
+#        '''find the peak element, nums[-1] == nums[n] == -infinite'''
+#        if not nums:
+#            return []
+#        tl = len(nums) - 1
+#        i = 0
+#        upFlag = True
+#        res =[]
+#        while i < tl:
+#            if nums[i] > nums[i + 1] and upFlag:
+#                res.append(i)
+#                upFlag = False
+#            elif nums[i] < nums[i + 1]:
+#                upFlag = True
+#            else:
+#                #equal
+#                upFlag = False
+#            i += 1
+#        if upFlag:
+#            res.append(tl)
+#        return res[0]
+#    def majorityElement(self, nums):
+#        '''find out elements more than 1/3
+#        there are one or two elements can be returned
+#        once they are majority, they can eliminate minority'''
+#        if not nums:
+#            return []
+#        candi1, candi2, count1, count2 = None, None, 0, 0
+#        for i in nums:
+#            if i == candi1:
+#                count1 += 1
+#            elif i == candi2:
+#                count2 += 1
+#            elif count1 == 0:
+#                candi1 = i
+#                count1 += 1
+#            elif count2 == 0:
+#                candi2 = i
+#                count2 += 1
+#            else:
+#                count1 -= 1
+#                count2 -= 1
+#        res = []
+#        for n in [candi1, candi2]:
+#            if nums.count(n) > len(nums) / 3:
+#                res.append(n)
+#        return res
+#
+#
+#    def maxProfit(self, prices):
+#        '''TODO: not finished'''
+#        #find all min and max, strip origin array
+#        minAry = []
+#        maxAry = []
+#        h = 1
+#        tl = len(prices)
+#        mf = True
+#        while h < tl:
+#            if mf and prices[h] > prices[h - 1]:
+#                #find min
+#                minAry.append(prices[h - 1])
+#                mf = False
+#            elif not mf and prices[h] < prices[h - 1]:
+#                #find max
+#                maxAry.append(prices[h - 1])
+#                mf = True
+#            #skip others
+#            h += 1
+#        if not mf:
+#            maxAry.append(prices[-1])
+#        i = 1
+#        tl = len(minAry)
+#        if tl == 0:
+#            return 0
+#        pdb.set_trace()
+#        min1 = minAry[0]
+#        max1 = maxAry[0]
+#        res = max1 - min1
+#        min2 = 0
+#        max2 = 0
+#        while i < tl:
+#            if min2 == max2 == 0:
+#                #add one or integrate
+#                if maxAry[i] - min1 > res + maxAry[i] - minAry[i]:
+#                    max1 = maxAry[i]
+#                else:
+#                    min2 = minAry[i]
+#                    max2 = maxAry[i]
+#                res = max1 + max2 - min1 - min2
+#            else:
+#                if maxAry[i] > max2 and minAry[i] < min2:
+#                    #2 must update to new
+#                    if max2 > max1:
+#                        max1 = max2
+#                        min1 = min(min1, min2)
+#                    else:
+#                        if max2 - min2 >= max1 - min1:
+#                            max1 = max2
+#                            min1 = min2
+#                elif maxAry[i] < max2 and minAry[i] > min2:
+#                    #because 1 want to
+#                    if maxAry[i] - minAry[i] > max1 - min1:
+#                        max1 = max2
+#                        min1 = min2
+#                        max2 = maxAry[i]
+#                        min2 = minAry[i]
+#                elif maxAry[i] > max2:
+#                    #2 want to combine
+#                    if maxAry[i] - min2 > maxAry[i] - minAry[i]:
+#
             #CANNOT update Separately
             ##update 2: 
             #tmpMin2 = -1
@@ -108,8 +231,8 @@ class Solution:
             #            min1 = tmpMin2
             #        #else no need to update
             #res = max2 + max1 - min1 - min2
-            i += 1
-        return res
+#            i += 1
+#        return res
 
 #    def findMin(self, nums):
 #        h = 0
@@ -495,5 +618,5 @@ class Solution:
 #                while tmpT < len(nums) and nums[tmpH] == target:
 #                    tmpT += 1
 #                return [tmpH, tmpT]
+
 #        return [-1, -1]
-#

@@ -13,7 +13,16 @@ import btree
 #related solution
 #import dc
 #import dp
-import arysol
+#import arysol
+#import stacksol
+#import greedysol
+#import hashsol
+#import treesol
+#import backtracksol
+#import strsol
+#import bitsol
+#import sortsol
+import specialsol
 
 #list test
 #listOne = mylist.LinkList()
@@ -25,26 +34,32 @@ import arysol
 #-10 -> -3 -> 0 -> 5 -> 9
 
 #BTree test
-#newR = myBTree.BTreeNode(1)
-#node1 = myBTree.BTreeNode(2)
-#node2 = myBTree.BTreeNode(3)
-#node3 = myBTree.BTreeNode(4)
-#node4 = myBTree.BTreeNode(5)
-#node5 = myBTree.BTreeNode(3)
-#node6 = myBTree.BTreeNode(4)
-#bTree = myBTree.MyBTree(newR)
-#newR.left = node1
-#newR.right = node2
-#node1.left = node3
-#node1.right = node4
-#node2.right = node5
-#node2.left = node6
+newR = btree.TreeNode(4)
+node1 = btree.TreeNode(2)
+node2 = btree.TreeNode(6)
+node3 = btree.TreeNode(1)
+node4 = btree.TreeNode(3)
+node5 = btree.TreeNode(7)
+node6 = btree.TreeNode(5)
+bTree = btree.BTree(newR)
+newR.left = node1
+newR.right = node2
+node1.left = node3
+node1.right = node4
+node2.right = node5
+node2.left = node6
 #    1
 #  2   3
 # 4 5 4 3
+#bTree.BFS(newR)
 
 #string input
-a = [3,4,6,0,3,7,5,8,2,9,1,6,6,2]
+#s = "aabdbaabeeadcbbdedacbbeecbabebaeeecaeabaedadcbdbcdaabebdadbbaeabdadeaabbabbecebbebcaddaacccebeaeedababedeacdeaaaeeaecbe"
+#t = "bddabdcae"
+#ary input
+a = [[5,8],[3,5],[1,9],[4,5],[0,2],[1,9],[7,8],[4,9]]
+#number input
 ##solution
-mysolu = arysol.Solution()
-print mysolu.maxProfit(a)
+mysolu = specialsol.Solution()
+print mysolu.canFinish(10,a)
+#print a

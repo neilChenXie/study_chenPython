@@ -1,70 +1,97 @@
-#Python
+# Python
 
-##Fundamental
+## Data
 
-* `#` for comment
+* data type
 
-*  `%` for `print`
-    * What is the difference between `%r` and `%s` ?
-        * Use the %r for debugging, since it displays the "raw" data of the variable, but the others are used for displaying to users.
-    * What's the point of %s and %d when you can just use %r?
-        * The %r is best for debugging, and the other formats are for actually displaying variables to users.
-* `[]`, `{}` and `()`
+* data Structure
 
-    * `[]`: list
+    * basic: Boolean, Int, Long, Float
 
-    * `{}`: dictionary
+    * basic DS: `[]`, `{}`, `()`, `set([])`
 
-    * `()`: tuple
+        * [Reference](https://docs.python.org/2/tutorial/datastructures.html#)
 
-* module
-  * `__name__`: `__main__` or `module`
+    * import collections: `deque`, `Counter`, `OrderedDict`
 
-* get object or variable **address**
-  * id()
+        * [Reference](https://docs.python.org/2/library/collections.html#collections.OrderedDict)
 
-##Design Skill
+  * higher level:
+
+## Coding
+
+* Pythonic
+
+* Higher Performance
+
+    * iterator
+        ```py
+        a = [1,2,3,4]
+        itor = iter(a)
+        print next(itor) #print 1
+        for i in itor:
+            #skipped the 1st element
+        ```
+
+* Lower level access
+
+    * get object or variable **address**
+
+        * id()
+
+* Tricks
+    * x = a or b
+        ```py
+        #one of a,b is equal to None
+        if a or b:
+            x = a or b
+        ```
+
+    * `hasattr()` check whether it has additional attributes
+        ```py
+        while newHead != None:
+            if hasattr(newHead,'flag') and newHead.flag == True:
+                return newHead
+                newHead.flag = True
+            return None
+        ```
+
+    * `print`
+
+        * without newline
+            ```py
+            #the last , is indicate
+            print str(node.value) , "->" ,
+            ```
+
+        * any format
+            ```py
+            a = [1,2,3]
+            print "the list:%r" %a
+            ```
+
+
+
+
+## Structure & Design Skill
 
 * OOP
+
   * class variable & object variable
+
   * no virtual function like C++
+
   * don't touch member directly
 
 * Structure
 
   * multi-file use **os** and **sys** module to change `path`
 
-##Coding Skill
+  * module
+      * `__name__`: `__main__` or `module`
 
-* x = a or b
-```py
-#one of a,b is equal to None
-if a or b:
-	x = a or b
-```
 
-* `hasattr()` check whether it has additional attributes
-```py
-while newHead != None:
-    if hasattr(newHead,'flag') and newHead.flag == True:
-        return newHead
-    newHead.flag = True
-return None
-```
-
-* `print`
-    * without newline
-    ```py
-    print str(node.value) , "->" ,
-    ```
-
-    * any format
-    ```py
-    a = [1,2,3]
-    print "the list:%r" %a
-    ```
-
-##Fault List
+## Fault List
 
 * `and` instead of `&&`
 
@@ -74,6 +101,8 @@ return None
 
 * file name cannot be `string.py`
 
-##Reference
+## Reference
 
 [1] [Pythonic](https://www.python.org/dev/peps/pep-0008/#indentation)
+[2] [Improve Performance](https://wiki.python.org/moin/PythonSpeed/PerformanceTips)
+[3] [Except System](https://docs.python.org/2/tutorial/errors.html)
