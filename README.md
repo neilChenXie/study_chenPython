@@ -2,76 +2,134 @@
 
 ## Data
 
-* data type
+### data type
 
-* data Structure
+`Boolean`, `Int`, `Long`, `Float`
 
-    * basic: Boolean, Int, Long, Float
+### Data Structure
 
-    * basic DS: `[]`, `{}`, `()`, `set([])`
+##### Basic DS:
 
-        * [Reference](https://docs.python.org/2/tutorial/datastructures.html#)
+* `[]`, `{}`, `()`, `set([])`
 
-    * import collections: `deque`, `Counter`, `OrderedDict`
+*  [reference](https://docs.python.org/2/tutorial/datastructures.html#)
 
-        * [Reference](https://docs.python.org/2/library/collections.html#collections.OrderedDict)
+##### Import collections:
 
-  * higher level:
+* `deque`, `Counter`, `OrderedDict`, `defaultdict`, `namedtuple`
+
+* [reference](https://docs.python.org/2/library/collections.html#collections.OrderedDict)
+
+##### Higher level:
+
+* `heapq`, `Queue`
+
+##### Article:
+
+[1] [basic](http://code.tutsplus.com/articles/advanced-python-data-structures--net-32748)
+
+[2] [basic & import](http://www.informit.com/articles/article.aspx?p=1719315)
 
 ## Coding
 
-* Pythonic
+### Pythonic
 
-* Higher Performance
+### Higher Performance
 
-    * iterator
+#### String Related
+
+```py
+# use join instead of +=
+a = ["as", "you", "sunny"]
+res = " ".join(a)
+
+#print
+a = {'a': 1, 'b':2}
+res = "hello %(a)s and %(b)s" %a
+```
+
+#### Loop Related
+
+```py
+# map > local & dot > basic
+# map(func, iter) call func for every iter, not good for overlap operation
+# record .func as lcoal variable
+# use xrange() instead of range()
+oldlist = "asdfs"
+newlist = []
+newlist = map(str.upper, oldlist)
+
+upper = str.upper
+append = newlist.append()
+for var in oldlist:
+    append(upper(var))
+```
+
+#### Dictionary
+
+```py
+# try is better than if
+# use .get(index, 0)
+# use collections.defaultdict
+```
+
+#### Calculate
+
+```py
+# + > >> or << > * or /
+
+```
+
+#### Profiling
+
+```py
+# several module
+```
+
+### Memory access
+
+#### Touch **address**
+
+```py
+# id()
+
+# iterator
+a = [1,2,3,4]
+b = iter(a)
+print next(b)
+```
+
+### Tricks
+
+* x = a or b
+    ```py
+    #one of a,b is equal to None
+    if a or b:
+        x = a or b
+    ```
+
+* `hasattr()` check whether it has additional attributes
+    ```py
+    while newHead != None:
+        if hasattr(newHead,'flag') and newHead.flag == True:
+            return newHead
+            newHead.flag = True
+        return None
+    ```
+
+* `print`
+
+    * without newline
         ```py
-        a = [1,2,3,4]
-        itor = iter(a)
-        print next(itor) #print 1
-        for i in itor:
-            #skipped the 1st element
+        #the last , is indicate
+        print str(node.value) , "->" ,
         ```
 
-* Lower level access
-
-    * get object or variable **address**
-
-        * id()
-
-* Tricks
-    * x = a or b
+    * any format
         ```py
-        #one of a,b is equal to None
-        if a or b:
-            x = a or b
+        a = [1,2,3]
+        print "the list:%r" %a
         ```
-
-    * `hasattr()` check whether it has additional attributes
-        ```py
-        while newHead != None:
-            if hasattr(newHead,'flag') and newHead.flag == True:
-                return newHead
-                newHead.flag = True
-            return None
-        ```
-
-    * `print`
-
-        * without newline
-            ```py
-            #the last , is indicate
-            print str(node.value) , "->" ,
-            ```
-
-        * any format
-            ```py
-            a = [1,2,3]
-            print "the list:%r" %a
-            ```
-
-
-
 
 ## Structure & Design Skill
 
@@ -104,5 +162,7 @@
 ## Reference
 
 [1] [Pythonic](https://www.python.org/dev/peps/pep-0008/#indentation)
+
 [2] [Improve Performance](https://wiki.python.org/moin/PythonSpeed/PerformanceTips)
+
 [3] [Except System](https://docs.python.org/2/tutorial/errors.html)
