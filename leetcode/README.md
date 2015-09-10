@@ -1,6 +1,7 @@
-	#Data Structure & Algorithm
+#Data Structure & Algorithm
 
 ##General
+
 * Full Adder
 
 | 1st \ 2nd | has c | no c |
@@ -147,21 +148,100 @@
 
 * DFS without recursive
 
-###BFS
 
-* Question
+## Binary Search
 
-    * word labber
+### Prerequist
 
-        > scan dictionary: n * dictLen * wordLen
-        scan Alphabet： n * 26 * wordLen
-        Therefore, it's depends on the dictLen
+* Sorted Array
 
-    * surrounded region
+### Template
 
-        > triggerQ & mapSet. check before delete, BFS.
-        cannot modify string in Python
+```py
+	'''
+	normally, can handle duplicate
+	Q: insertation, fistBadVersion
+	'''
+	ary.sort()
+	h = 0
+	t = len(ary) - 1 #use index not length
+	while h <= t:
+		'''
+		1. not (h + t) >> 1 in case of sum overflow
+		2. >> 1 instead of >>2
+		3. >> if lower than +, need +(>>1)
+		'''
+		m = h + ((t - h) >> 1)
+		if ary[m] == target:
+			return m
+		elif ary[m] < target:
+			h = m + 1
+		else:
+			t = m - 1
+	'''
+	h may equal to len(ary) or 0
+	or ary[h] is just bigger than target
+	'''
+	return h
+	'''
+	because h + ((t - h) >> 1) floor to h.
+	trick: h + ((t - h + 1) >> 1) floor to t. index t is just less than target
+	'''
+```
 
-    * numIslands
+### Trick
 
-        > '1' not 1
+```py
+	'''
+	find target in rotated sorted without/with duplicate
+	edge: target < nums[0] and > nums[-1], exist in vaccum
+	rotated: 
+		array become 2 part:
+		1. nums[m] > nums[h] left part
+		2. nums[m] < nums[t] right part
+		3. nums[m] == nums[h] undecided
+		in situation 1: target in h~m, then simplify to normal BS, otherwise, h = m + 1
+		similarly, for situation 2: target in m~t, then simplify to normal BS, otherwise, t = m - 1
+		for undecided, chech if nums[h] == target, otherwise h = h + 1
+
+		first check target == nums[m] or target == nums[t] or target == nums[h]
+	'''
+```
+
+## BFS
+
+### Template
+
+```py
+	# double direction BFS
+
+```
+
+### Question
+
+* word labber
+
+    > scan dictionary: n * dictLen * wordLen
+    scan Alphabet： n * 26 * wordLen
+    Therefore, it's depends on the dictLen
+
+* surrounded region
+
+    > triggerQ & mapSet. check before delete, BFS.
+    cannot modify string in Python
+
+* numIslands
+
+    > '1' not 1
+
+## General Tricks
+
+* find range of the same value
+	```py
+	h = t = index
+	while h > 0 and ary[h - 1] == target:
+		h -= 1
+	while t < len(ary) - 1 and ary[t+1] == target:
+		t += 1
+	return [h,t]
+	```

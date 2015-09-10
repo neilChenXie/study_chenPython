@@ -8,31 +8,72 @@
 
 ### Data Structure
 
-##### Basic DS:
+#### Basic DS:
 
 * `[]`, `{}`, `()`, `set([])`
 
 *  [reference](https://docs.python.org/2/tutorial/datastructures.html#)
 
-##### Import collections:
+#### Import collections:
 
 * `deque`, `Counter`, `OrderedDict`, `defaultdict`, `namedtuple`
 
 * [reference](https://docs.python.org/2/library/collections.html#collections.OrderedDict)
 
-##### Higher level:
+#### Higher level:
 
 * `heapq`, `Queue`
 
-##### Article:
+#### Need Implement:
+
+* `Trie`
+
+#### Article:
 
 [1] [basic](http://code.tutsplus.com/articles/advanced-python-data-structures--net-32748)
 
 [2] [basic & import](http://www.informit.com/articles/article.aspx?p=1719315)
 
+[3] [heapq](http://www.bogotobogo.com/python/python_PriorityQueue_heapq_Data_Structure.php)
+
+### Implement
+
+####Heap
+
+
+####Trie
+
+
 ## Coding
 
 ### Pythonic
+
+```py
+#empty string can use not a
+a = ""
+if not a:
+	#run /w empty a
+```
+
+```py
+#Created object can have dynamic attributes, built-in DS cannot
+class Object(object):
+	pass
+aa = Object
+aa.flag = True #add flag dynamically
+if hasattr(aa,'flag'):
+	print aa.flag #print True
+
+bb = {}
+try:
+	bb.flag = True
+except Exception, e:
+	print e #'dict' object has no attribute 'flag'
+```
+
+```py
+
+```
 
 ### Higher Performance
 
